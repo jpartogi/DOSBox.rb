@@ -1,0 +1,1 @@
+require File.expand_path("../../app/dosbox", __FILE__)
