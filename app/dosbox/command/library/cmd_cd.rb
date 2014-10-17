@@ -15,7 +15,7 @@ module DOSBox
 
         def check_param_values(outputter)
           if @params.length > 0
-            @destination_directory = self.extract_and_check_if_valid_directory(@params[0], @drive, outputter)
+            @destination_directory = self.extract_and_check_if_valid_directory(@params[0], outputter)
             not @destination_directory.nil?
           else
             @destination_directory = nil
@@ -25,24 +25,24 @@ module DOSBox
 
         def execute(outputter)
           if @params.length.eql? 0
-            self.print_current_directory_path(@drive.current_dir.path, outputter)
+            self.print_current_directory_path(outputter)
           else
-            self.change_current_directory(@destination_directory, @drive, outputter)
+            self.change_current_directory(@destination_directory, outputter)
           end
         end
 
-        def change_current_directory(destination_directory, drive, outputter)
+        def change_current_directory(destination_directory, outputter)
           unless @drive.change_current_dir(destination_directory)
             outputter.println(SYSTEM_CANNOT_FIND_THE_PATH_SPECIFIED)
           end
         end
 
-        def print_current_directory_path(current_directory_name, outputter)
-          outputter.println(current_directory_name)
+        def print_current_directory_path(outputter)
+          outputter.println(@drive.current_dir.path)
         end
 
-        def extract_and_check_if_valid_directory(destination_directory_name, drive, outputter)
-          @destination_directory = drive.item_from_path(destination_directory_name)
+        def extract_and_check_if_valid_directory(destination_directory_name, outputter)
+          @destination_directory = @drive.item_from_path(destination_directory_name)
 
           if @destination_directory.nil?
             outputter.println(SYSTEM_CANNOT_FIND_THE_PATH_SPECIFIED)

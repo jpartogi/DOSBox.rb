@@ -1,13 +1,10 @@
 module DOSBox
 	module Command
 		class Invoker
+      attr_writer :commands
 
       def initialize
         @commands = Array.new
-      end
-
-			def commands=(commands)
-				@commands = commands
       end
 
       def add_command(command)

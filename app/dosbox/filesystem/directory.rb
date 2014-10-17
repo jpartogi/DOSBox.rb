@@ -9,12 +9,11 @@ module DOSBox
       end
 
       def add(file_system_item)
-        @content << file_system_item
-
         if has_another_parent(file_system_item)
           remove_parent(file_system_item)
         end
 
+        @content << file_system_item
         file_system_item.parent= self
       end
 

@@ -52,7 +52,7 @@ describe CmdMkDir do
     test_dir3_name = "test3"
 
     execute_command("mkdir " + test_dir1_name + " " + test_dir2_name + " " + test_dir3_name)
-    expect(@outputter.output).to eq("")
+    expect(@outputter.output).to be_empty
 
     test_dir1 = @drive.item_from_path(test_dir1_name)
     test_dir2 = @drive.item_from_path(test_dir2_name)

@@ -31,10 +31,6 @@ module DOSBox
         true
       end
 
-      def compare_command_name(command_name)
-        @command_name.eql? command_name
-      end
-
       def params=(params)
         @params.clear
         @params = params

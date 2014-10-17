@@ -19,7 +19,7 @@ describe CmdCd do
 
     execute_command("cd " + @subdir1.path)
 
-    expect(@outputter.output).to eq("")
+    expect(@outputter.output).to be_empty
     expect(@drive.current_dir).to be @subdir1
   end
 
@@ -28,8 +28,16 @@ describe CmdCd do
 
     execute_command("cd " + @subdir1.name)
 
-    expect(@outputter.output).to eq("")
+    expect(@outputter.output).to be_empty
     expect(@drive.current_dir).to be @subdir1
+  end
+
+  it "should not change directory when directory is not found" do
+    @drive.change_current_dir(@root_dir)
+
+    execute_command("cd subdir2")
+
+    expect(@outputter.output).to include CmdCd::SYSTEM_CANNOT_FIND_THE_PATH_SPECIFIED
   end
 
   it "should change to sub-directory ending with backslash" do
@@ -37,7 +45,7 @@ describe CmdCd do
 
     execute_command("cd " + @subdir1.path + "\\")
 
-    expect(@outputter.output).to eq("")
+    expect(@outputter.output).to be_empty
     expect(@drive.current_dir).to be @subdir1
   end
 
@@ -46,7 +54,7 @@ describe CmdCd do
 
     execute_command("cd \\")
 
-    expect(@outputter.output).to eq("")
+    expect(@outputter.output).to be_empty
     expect(@drive.current_dir).to be @root_dir
   end
 
@@ -55,7 +63,7 @@ describe CmdCd do
 
     execute_command("cd ..")
 
-    expect(@outputter.output).to eq("")
+    expect(@outputter.output).to be_empty
     expect(@drive.current_dir).to be @root_dir
   end
 
@@ -64,7 +72,7 @@ describe CmdCd do
 
     execute_command("cd ..")
 
-    expect(@outputter.output).to eq("")
+    expect(@outputter.output).to be_empty
     expect(@drive.current_dir).to be @root_dir
   end
 
@@ -73,7 +81,7 @@ describe CmdCd do
 
     execute_command("cd .")
 
-    expect(@outputter.output).to eq("")
+    expect(@outputter.output).to be_empty
     expect(@drive.current_dir).to be @subdir1
   end
 
@@ -120,7 +128,7 @@ describe CmdCd do
 
     execute_command("cd " + @subdir1.path)
 
-    expect(@outputter.output).to eq("")
+    expect(@outputter.output).to be_empty
     expect(@drive.current_dir).to be @subdir1
 
     execute_command("cd")

@@ -3,6 +3,7 @@ module DOSBox
 		class Factory
       attr_reader :commands
 
+      # :nocov:
 			def initialize(drive)
 				@commands = Array.new
 
@@ -12,7 +13,7 @@ module DOSBox
         @commands << CmdMkFile.new("mkfile", drive)
         @commands << CmdMkFile.new("mf", drive)
 			end
-
+      # :nocov:
 		end
 	end
 end

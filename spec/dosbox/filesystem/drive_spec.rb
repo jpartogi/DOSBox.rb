@@ -15,9 +15,22 @@ describe Drive do
     @sub_dir1.add(@sub_sub_dir2)
   end
 
+  it "should setup drive correctly" do
+    expect(@drive.drive_letter).to eq "C:"
+    expect(@drive.prompt).to eq "C:\\>"
+    expect(@drive.to_s).to eq "C"
+  end
+
   it "should change directory when relative path is given" do
     @drive.change_current_dir(@root_dir)
+
     expect(@drive.item_from_path("subdir1")).to eq(@sub_dir1)
+  end
+
+  it "should not change directory when directory is not found" do
+    sub_dir2 = Directory.new("subdir2")
+
+    expect(@drive.change_current_dir(sub_dir2)).to be_false
   end
 
   it "should change directory when absolute path is given" do

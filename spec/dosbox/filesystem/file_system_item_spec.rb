@@ -11,4 +11,11 @@ describe FileSystemItem do
     expect { FileSystemItem.new("C:,", nil) }.to raise_error
   end
 
+  it "should set path correctly" do
+    item = FileSystemItem.new("root", nil)
+
+    expect(item.path).to eq "root"
+    expect(item.to_s).to eq "root"
+  end
+
 end

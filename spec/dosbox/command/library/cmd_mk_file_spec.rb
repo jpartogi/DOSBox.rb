@@ -20,7 +20,7 @@ describe CmdMkFile do
 
     execute_command("mkfile " + file_name + " " + file_content)
 
-    expect(@outputter.output).to eq("")
+    expect(@outputter.output).to be_empty
     expect(@drive.current_dir.num_of_contained_files).to eq 1
 
     file = @drive.item_from_path(@drive.current_dir.path + "\\" + file_name)

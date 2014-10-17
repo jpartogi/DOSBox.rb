@@ -1,12 +1,15 @@
 module DOSBox
 	module Console
 		class ConsoleProc
+      # :nocov:
 			def initialize(invoker, drive)
 				@invoker = invoker
 				@drive = drive
 				@outputter = ConsoleOutputter.new
 			end
+      # :nocov:
 
+      # :nocov:
 			def process_input
 				@outputter.println "DOSBox, Scrum.org, Professional Scrum Developer Training"
 				@outputter.println "Copyright (c) Joshua Partogi. All rights reserved."
@@ -29,7 +32,8 @@ module DOSBox
 				end
 
 				@outputter.println "Goodbye!"
-			end
+      end
+      # :nocov:
 		end
 	end
 end

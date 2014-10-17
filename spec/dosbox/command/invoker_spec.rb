@@ -51,6 +51,7 @@ describe Invoker do
   describe "Command Executor" do
     it "should execute command" do
       @invoker.execute_command("dir", @outputter)
+      expect(@cmd.to_s).to eq("dir")
       expect(@cmd.executed).to be_true
     end
 

@@ -7,12 +7,9 @@ module DOSBox
       ILLEGAL_ARGUMENT_TEXT = "Error: A file or directory name may not contain '/', '\\', ',', ' ' or ':'"
 
 			def initialize(name, parent)
-        unless check_name(name)
-          raise ArgumentError, ILLEGAL_ARGUMENT_TEXT
-        end
+        self.name= name
 
-				@name = name
-				@parent = parent
+				@parent= parent
 			end
 
 			def path

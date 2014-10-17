@@ -1,6 +1,7 @@
 module DOSBox
 	module System
 		class Configurator
+      # :nocov:
 			def configurate_system
 				drive = Drive.new("C")
 				drive.restore
@@ -11,7 +12,8 @@ module DOSBox
 
 				console = ConsoleProc.new(invoker, drive)
 				console.process_input
-			end
+      end
+      # :nocov:
 		end
 	end
 end
