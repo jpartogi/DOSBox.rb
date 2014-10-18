@@ -2,10 +2,10 @@ module DOSBox
 	module Console
 		class ConsoleProc
       # :nocov:
-			def initialize(invoker, drive)
+			def initialize(invoker, drive, outputter)
 				@invoker = invoker
 				@drive = drive
-				@outputter = ConsoleOutputter.new
+				@outputter = outputter
 			end
       # :nocov:
 

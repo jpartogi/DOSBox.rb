@@ -10,7 +10,8 @@ module DOSBox
 				invoker = Invoker.new
 				invoker.commands= factory.commands
 
-				console = ConsoleProc.new(invoker, drive)
+        outputter = ConsoleOutputter.new
+				console = ConsoleProc.new(invoker, drive, outputter)
 				console.process_input
       end
       # :nocov:

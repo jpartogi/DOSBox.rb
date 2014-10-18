@@ -46,19 +46,22 @@ module DOSBox
         end
 
         def print_header(dir_to_print, outputter)
-          outputter.println("Directory of " + dir_to_print.path)
+          outputter.println(" Directory of " + dir_to_print.path)
           outputter.newline
         end
 
         def print_content(dir_content, outputter)
           dir_content.each do |item|
             if item.is_directory?
+              outputter.printnl("\t\t")
               outputter.printnl("<DIR>")
+              outputter.printnl("\t ")
             else
+              outputter.printnl("\t\t\t")
               outputter.printnl(item.content.length.to_s)
             end
 
-            outputter.printnl("\t" + item.name)
+            outputter.printnl(" " + item.name)
             outputter.newline
           end
         end
