@@ -1,13 +1,15 @@
 module DOSBox
   module Command
+		include BaseCommand
     module Library
-      class CmdDir < BaseCommand
+
+      class CmdDir
         attr_reader :directory_to_print
 
         SYSTEM_CANNOT_FIND_THE_PATH_SPECIFIED = "File Not Found."
 
         def initialize(command_name, drive)
-          super(command_name, drive)
+          init(command_name, drive)
         end
 
         def check_number_of_params(num_of_params)

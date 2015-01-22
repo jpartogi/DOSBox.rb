@@ -1,19 +1,16 @@
 module DOSBox
 	module Command
-		class BaseCommand
+		module BaseCommand
       attr_reader :drive, :params, :command_name
 
       INCORRECT_SYNTAX = "The syntax of the command is incorrect."
       DEFAULT_ERROR_MESSAGE_WRONG_PARAMETER = "Wrong parameter entered."
 
-			def initialize(command_name, drive)
+			def init(command_name, drive)
         @command_name = command_name.downcase
         @drive = drive
         @params = Array.new
       end
-
-      # Stub - will be overridden
-      def execute(outputter); end
 
       def check_params(outputter)
         unless check_number_of_params(@params.length)
@@ -40,12 +37,6 @@ module DOSBox
         @command_name
       end
 
-      protected
-        # Stub - will be overridden
-        def check_number_of_params(num_of_params); true end
-
-        # Stub - will be overridden
-        def check_param_values(outputter); true end
 		end
 	end
 end

@@ -1,12 +1,14 @@
 module DOSBox
 	module Command
+		include BaseCommand
+
 		module Library
-			class CmdCd < BaseCommand
+			class CmdCd
         SYSTEM_CANNOT_FIND_THE_PATH_SPECIFIED = "The system cannot find the path specified."
         DESTINATION_IS_FILE = "The directory name is invalid."
 
 				def initialize(command_name, drive)
-					super(command_name, drive)
+					init(command_name, drive)
         end
 
         def check_number_of_params(num_of_params)

@@ -1,12 +1,13 @@
 module DOSBox
   module Command
     module Library
+			include BaseCommand
 
-      class CmdMkDir < BaseCommand
+      class CmdMkDir
         PARAMETER_CONTAINS_BACKLASH = "At least one parameter denotes a path rather than a directory name."
 
         def initialize(command_name, drive)
-          super(command_name, drive)
+          init(command_name, drive)
         end
 
         def check_number_of_params(num_of_params)

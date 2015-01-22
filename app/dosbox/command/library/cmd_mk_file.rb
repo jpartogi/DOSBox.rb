@@ -1,10 +1,12 @@
 module DOSBox
   module Command
     module Library
-      class CmdMkFile < BaseCommand
+			include BaseCommand
+
+      class CmdMkFile
 
         def initialize(command_name, drive)
-          super(command_name, drive)
+          init(command_name, drive)
         end
 
         def execute(outputter)
